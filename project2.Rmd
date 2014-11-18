@@ -1,0 +1,11 @@
+---
+title: "Analysis of Effects of Types of Storms and Other Severe Weather Events"
+author: "Thammanoon Kawinfruangfukul"
+date: "Tuesday, November 18, 2014"
+output: html_document
+---
+
+## Data Processin
+
+
+## Results
