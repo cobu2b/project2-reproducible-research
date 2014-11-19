@@ -18,7 +18,7 @@ output: html_document
     downloadOn <- format(Sys.time(), "%b %d, %Y %X")
 
     # Load data
-    rawData <- read.csv(file =bzfile(destfile), header=TRUE)
+    raw <- read.csv(file =bzfile(destfile), header=TRUE)
 ```
 
 
