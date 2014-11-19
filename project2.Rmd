@@ -6,6 +6,20 @@ output: html_document
 ---
 
 ## Data Processing
-https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2
+```{r echo=TRUE, cache=TRUE}
+    # Download raw data and record the download date and time
+    if ( !file.exists( "data" ) ) {
+        dir.create( "data" )
+    }
+    
+    url <- "http://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+    destfile <- "./data/stormData.csv.bz2"
+    download.file(url=url, destfile=destfile)
+    downloadOn <- format(Sys.time(), "%b %d, %Y %X")
+
+    # Load data
+    rawData <- read.csv(file =bzfile(destfile), header=TRUE)
+```
+
 
 ## Results
