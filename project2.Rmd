@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ## Synopsis
-This analysis aims to identify types of storms and other severe weather events that affect to population health and economic consequences. The data comes from the National Weather Service Storm Data. Event types and other factors are normalized in order to specify top-10 event types affecting population health or economic consequences.
+This analysis aims to identify types of storms and other severe weather events that affect to population health and economic consequences. The data comes from the National Weather Service Storm Data. Event types and other factors are normalized in order to specify top-10 event types affecting population health or economic consequences. 
 
 ## Data Processing
 This section is divided into two parts: obtaining and cleaning data. In Obtaining data part, the raw will be downloaded from the URL referred to the National Weather Service Storm Data and loaded into r object called rawData.
@@ -67,10 +67,6 @@ data$CROPDMGEXP <- NULL
 
 # Normalize event types
 data$evtype[grep("avalanche", data$evtype, ignore.case = TRUE)] <- "AVALANCHE"
-data$evtype[grep("FLOOD", data$evtype, ignore.case = TRUE)] <- "FLOOD"
-data$evtype[grep("TORNADO", data$evtype, ignore.case = TRUE)] <- "TORNADO"
-data$evtype[grep("TORNDAO", data$evtype, ignore.case = TRUE)] <- "TORNADO"
-data$evtype[grep("HAIL", data$evtype, ignore.case = TRUE)] <- "HAIL"
 data$evtype[grep("THUNDERSTORM", data$evtype, ignore.case = TRUE)] <- "THUNDERSTORM"
 data$evtype[grep("THUDERSTORM", data$evtype, ignore.case = TRUE)] <- "THUNDERSTORM"
 data$evtype[grep("THUNDERESTORM", data$evtype, ignore.case = TRUE)] <- "THUNDERSTORM"
@@ -78,6 +74,10 @@ data$evtype[grep("THUNDERSTROM", data$evtype, ignore.case = TRUE)] <- "THUNDERST
 data$evtype[grep("THUNDEERSTORM", data$evtype, ignore.case = TRUE)] <- "THUNDERSTORM"
 data$evtype[grep("TSTM", data$evtype, ignore.case = TRUE)] <- "THUNDERSTORM"
 data$evtype[grep("THUNERSTORM", data$evtype, ignore.case = TRUE)] <- "THUNDERSTORM"
+data$evtype[grep("FLOOD", data$evtype, ignore.case = TRUE)] <- "FLOOD"
+data$evtype[grep("TORNADO", data$evtype, ignore.case = TRUE)] <- "TORNADO"
+data$evtype[grep("TORNDAO", data$evtype, ignore.case = TRUE)] <- "TORNADO"
+data$evtype[grep("HAIL", data$evtype, ignore.case = TRUE)] <- "HAIL"
 data$evtype[grep("HURRICANE", data$evtype, ignore.case = TRUE)] <- "HURRICANE"
 data$evtype[grep("HEAT", data$evtype, ignore.case = TRUE)] <- "HEAT"
 data$evtype[grep("FREEZ", data$evtype, ignore.case = TRUE)] <- "FREEZE"
@@ -117,7 +117,7 @@ g <- g + labs(title = "Fig. 1 Top-10 Event Types Affected to Health Population")
 print(g)
 ```
 
-Effects to economic consequences should be considered both property and crop damages equally.
+Effects to economic consequences should be considered both property and crop damages equally since both damages are relatively affected economic consequnces.
 ```{r echo=TRUE, cache=TRUE, warning=FALSE}
 damages <- aggregate(data$propdmg+data$cropdmg,
                      by=list(data$evtype),
